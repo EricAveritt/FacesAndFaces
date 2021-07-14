@@ -43,7 +43,7 @@ services:
     image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
     container_name: sqlserver
     environment:
-      ACCEPT_EULA: Y
+      ACCEPT_EULA: "Y"
       SA_PASSWORD: "BigPassw0rd"
     ports:
       - "1403:1433"

@@ -2,16 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using  WebMvc.RestClients;
-using  WebMvc.Services;
+using WebMvc.RestClients;
+using WebMvc.Services;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.AzureAppServices;
 
-namespace  WebMvc
+namespace WebMvc
 {
     public class Startup
     {
@@ -31,7 +33,7 @@ namespace  WebMvc
                 cfg =>
                 {
                     var host = cfg.Host("rabbitmq", "/", h => { });
-                     services.AddSingleton<IBus>(provider => provider.GetRequiredService<IBusControl>());
+                    services.AddSingleton<IBus>(provider => provider.GetRequiredService<IBusControl>());
                     services.AddSingleton<IHostedService, BusService>();
 
                 }));
@@ -52,6 +54,7 @@ namespace  WebMvc
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
             app.UseStaticFiles();
 
             app.UseRouting();

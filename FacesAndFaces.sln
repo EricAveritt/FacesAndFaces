@@ -12,6 +12,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessagingInterfacesConstants", "FacesSharedLib\MessagingInterfacesConstants\MessagingInterfacesConstants.csproj", "{B6FA5B86-287A-4D76-AE88-44A1AC4C47BD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FacesWeb", "FacesWeb", "{95DDBD70-E055-4742-B941-F34E4434DB93}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebMvc", "FacesWeb\WebMvc\WebMvc.csproj", "{5056028F-BB85-4902-BB39-3F36AEB93400}"
 EndProject
