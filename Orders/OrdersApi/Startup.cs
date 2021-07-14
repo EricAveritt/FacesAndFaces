@@ -1,19 +1,14 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using GreenPipes;
 using MassTransit;
 using Messaging.Constants;
- 
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using OrdersApi.Hubs;
 using OrdersApi.Messages.Consumers;
 using OrdersApi.Persistence;
@@ -38,7 +33,7 @@ namespace OrdersApi
             (
                  //Configuration.GetConnectionString("OrdersContextConnection")
                  Configuration["OrdersContextConnection"]
-                 
+
             ));
             Console.Out.WriteLine(Configuration["OrdersContextConnection"]);
             services.AddSignalR()
@@ -46,8 +41,8 @@ namespace OrdersApi
                 {
                     options.PayloadSerializerOptions.PropertyNamingPolicy = null;
                 });
-                
-                
+
+
             services.AddHttpClient();
 
 
@@ -58,8 +53,8 @@ namespace OrdersApi
                 {
                     c.AddConsumer<RegisterOrderCommandConsumer>();
                     c.AddConsumer<OrderDispatchedEventConsumer>();
-                } );
-               
+                });
+
 
             services.AddSingleton(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
              {
