@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: ericaverittfacesandfaces 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ericaverittfacesandfaces
+  template:
+    metadata:
+      labels:
+        app: ericaverittfacesandfaces 
+    spec:
+      containers:
+        - name: ericaverittfacesandfaces 
+          image: princeericfacescontainers.azurecr.io/ericaverittfacesandfaces
+          ports:
+          - containerPort: 80
